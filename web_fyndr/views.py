@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.template import loader
 from django.core.files.storage import FileSystemStorage
-from classifier.py import isMens, isWomens, isVendingMachine
+from classifier import isMens, isWomens, isVendingMachine
 import psycopg2
 
 try:
