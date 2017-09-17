@@ -1,0 +1,1 @@
+sudo docker run -ti --rm --volumes-from logs --volumes-from data --net=datahub_dev -v /home/famien/Code/datahub:/datahub -w /datahub/src datahuborg/datahub /bin/bash

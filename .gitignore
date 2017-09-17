@@ -3,3 +3,4 @@ venv
 staticfiles
 .env
 fynder-v/
+./fynder-place/

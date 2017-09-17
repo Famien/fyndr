@@ -1,0 +1,19 @@
+{% block content %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="myfile">
+    <button type="submit">Upload</button>
+  </form>
+
+  <p><a href="{% url 'index' %}">Return to home</a></p>
+{% endblock %}
+
+<script>
+$(document).ready(function() {
+	$.ajax({url: "find_rooms", async: false, success:
+		function(result) {
+			$("div").html(result);
+		}
+	});
+});
+</script>
