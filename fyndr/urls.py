@@ -19,6 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     
     url(r'^home/', include('web_fyndr.urls')),
-    url(r'^fine-uploader/', include('django_fine_uploader.urls', namespace='django_fine_uploader')),
     url(r'^admin/', admin.site.urls),
 ]
