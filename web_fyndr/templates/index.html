@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<body>
 {% block content %}
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -5,15 +13,19 @@
     <button type="submit">Upload</button>
   </form>
 
+  <div id="rooms"></div>
+
   <p><a href="{% url 'index' %}">Return to home</a></p>
 {% endblock %}
-
-<script>
-$(document).ready(function() {
-	$.ajax({url: "find_rooms", async: false, success:
-		function(result) {
-			$("div").html(result);
-		}
-	});
-});
+  <script>
+  $(document).ready(function(){
+      $.get("/get_rooms", function(data, status){
+        console.log(data['data'])
+        $('#rooms').html(data['data'][1])
+    });
+  });
+ 
 </script>
+
+</body>
+</html>

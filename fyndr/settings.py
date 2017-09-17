@@ -17,6 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     #'django_fine_uploader.apps.DjangoFineUploaderConfig',
     'django.contrib.staticfiles',
+    'web_fyndr',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +61,7 @@ ROOT_URLCONF = 'fyndr.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(SETTINGS_PATH, 'templates'),],
+        'DIRS': [os.path.join(SETTINGS_PATH, 'templates'),'/web_fyndr/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
