@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.template import loader
 from django.core.files.storage import FileSystemStorage
+from classifier import *
 import psycopg2
 
 try:
@@ -29,6 +30,10 @@ def index(request):
 		myfile = request.FILES['myfile']
 		fs = FileSystemStorage()
 		filename = fs.save(myfile.name, myfile)
+
+		url = "radiant-forest-23095.herokuapp.com/media/" + filename
+		print('url: ' + url)
+		getTags(url)
 		print("filename: " + filename)
 		uploaded_file_url = fs.url(filename)
 		return render(request, 'index.html', context)

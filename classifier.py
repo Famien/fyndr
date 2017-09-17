@@ -46,8 +46,8 @@ def getTags(imageUrl):
         tags = parsed['description']['tags']
         # print tags
         return tags
-        print ("Response:")
-        print (json.dumps(parsed, sort_keys=True, indent=2))
+        print("Response:")
+        print(json.dumps(parsed, sort_keys=True, indent=2))
         conn.close()
 
     except Exception as e:
@@ -81,8 +81,7 @@ def getText(imageUrl):
         parsed = json.loads(data)
         text=[]
         # print len(parsed['regions'])
-        for i in range(len(parsed['re
-        gions'])):
+        for i in range(len(parsed['regions'])):
             # print parsed['regions'][i]['lines'][0]['words'][0]['text']
             text.append(parsed['regions'][i]['lines'][0]['words'][0]['text'])
             # print text
@@ -112,7 +111,7 @@ def isWomens(imageUrl):
     texts = []
     for i in text:
         texts.append(i.lower())
-    print texts
+    print(texts)
     if 'women' in texts:
         return True
     else:
@@ -121,8 +120,8 @@ def isWomens(imageUrl):
 def isVendingMachine(imageUrl):
     tags = getTags(imageUrl)
     text = getText(imageUrl)
-    print tags
-    print text
+    print(tags)
+    print(text)
     if 'food' in tags and 'machine' in tags:
         return True
     elif 'pepsi' in text or 'aquafina' in text:
@@ -131,4 +130,4 @@ def isVendingMachine(imageUrl):
         return False
 
 # print isWomens('http://www.safetysign.com/images/source/medium-images/F4916.png')
-print isVendingMachine('https://upload.wikimedia.org/wikipedia/commons/1/1d/Push-bar-drinking-fountain.jpg')
+print(isVendingMachine('https://upload.wikimedia.org/wikipedia/commons/1/1d/Push-bar-drinking-fountain.jpg'))
