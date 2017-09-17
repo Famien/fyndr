@@ -43,6 +43,6 @@ def find_rooms(request):
 	cur = conn.cursor()
 	cur.execute("""SELECT * FROM fyndr_rooms""")
 	rows = cur.fetchall()
-	return rows
+	return rows[0]
 
 
