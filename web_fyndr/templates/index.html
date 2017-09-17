@@ -101,6 +101,7 @@ https://github.com/douglasmiranda/django-fine-uploader/tree/master/example
       debug: true,
       element: document.getElementById('default-concurrent-chunked-uploader'),
       request: {
+        endpoint: '{% url 'django_fine_uploader:upload' %}',
         customHeaders: {
           'X-CSRFToken': Cookies.get('csrftoken')
         }
@@ -111,6 +112,7 @@ https://github.com/douglasmiranda/django-fine-uploader/tree/master/example
             enabled: true
         },
         success: {
+          endpoint: '{% url 'django_fine_uploader:upload' %}?done'
         }
       }
     });
