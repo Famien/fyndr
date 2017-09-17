@@ -132,6 +132,7 @@
         console.log('yeah!')
 
         window.addEventListener('deviceorientation', function(event) {
+          console.log("changed")
           var alpha;
                 //Check for iOS property
                 if(event.webkitCompassHeading) {
@@ -149,10 +150,10 @@
                   }
                 }
 
-                compass.style.Transform = 'rotate(' + alpha + 'deg)';
-                compass.style.WebkitTransform = 'rotate('+ webkitAlpha + 'deg)';
-                //Rotation is reversed for FF
-                compass.style.MozTransform = 'rotate(-' + alpha + 'deg)'; 
+                // compass.style.Transform = 'rotate(' + alpha + 'deg)';
+                // compass.style.WebkitTransform = 'rotate('+ webkitAlpha + 'deg)';
+                // //Rotation is reversed for FF
+                // compass.style.MozTransform = 'rotate(-' + alpha + 'deg)'; 
               }, false);
       }
     });
