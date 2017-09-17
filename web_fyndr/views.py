@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.template import loader
 from django.core.files.storage import FileSystemStorage
+from classifier.py import isMens, isWomens, isVendingMachine
 import psycopg2
 
 try:
@@ -44,5 +45,7 @@ def find_rooms(request):
 	cur.execute("""SELECT * FROM fyndr_rooms""")
 	rows = cur.fetchall()
 	return JsonResponse({"data": rows})
+
+
 
 
