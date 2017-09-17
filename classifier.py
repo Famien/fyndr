@@ -100,7 +100,7 @@ def isMens(imageUrl):
     texts = []
     for i in text:
         texts.append(i.lower())
-    print texts
+    print (texts)
     if 'men' in texts:
         return True
     else:
