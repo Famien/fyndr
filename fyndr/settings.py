@@ -40,7 +40,6 @@ INSTALLED_APPS = [
 #    'whitenoise.runserver_nostatic',
     #'django_fine_uploader.apps.DjangoFineUploaderConfig',
     'django.contrib.staticfiles',
-    'web_fyndr',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +58,7 @@ ROOT_URLCONF = 'fyndr.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,8 +80,12 @@ WSGI_APPLICATION = 'fyndr.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd9eu2mf4n8hcq4',
+        'USER': 'oevfewnurxkiyq',
+        'PASSWORD': '59e1ccde40a94e32af13a27b3866969c92b83a41474c4b3cde782348cf8985ca',
+        'HOST': 'ec2-23-21-186-138.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
