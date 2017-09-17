@@ -18,6 +18,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
+ENV_PATH = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -41,7 +42,7 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     #'django_fine_uploader.apps.DjangoFineUploaderConfig',
-    'django.contrib.staticfiles',
+        'django.contrib.staticfiles',
     'web_fyndr',
 ]
 
@@ -141,4 +142,4 @@ STATICFILES_DIRS = [
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = os.path.join(ENV_PATH, 'media/')
