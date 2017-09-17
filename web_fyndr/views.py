@@ -9,7 +9,7 @@ import psycopg2
 try:
 	conn = psycopg2.connect("dbname='d9eu2mf4n8hcq4' user='oevfewnurxkiyq' host='ec2-23-21-186-138.compute-1.amazonaws.com' password='59e1ccde40a94e32af13a27b3866969c92b83a41474c4b3cde782348cf8985ca'")
 except:
-	print "can't connect to database"
+	print("can't connect to database")
 
 def index(request):
 	print("index")
