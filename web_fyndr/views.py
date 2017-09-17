@@ -36,7 +36,8 @@ def index(request):
 		getTags(url)
 		print("filename: " + filename)
 		uploaded_file_url = fs.url(filename)
-		return render(request, 'index.html', context)
+		context['url'] = url
+		return render(request, 'index.html', context )
 
 	return render(request, 'index.html', context)
 
