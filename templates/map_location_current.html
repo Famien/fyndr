@@ -50,17 +50,8 @@
         var features = [];
         latList = [];
         longList = [];
-        iconList = ['male'];
+        iconList = [];
 
-        function symbolParser(room_type) {
-          if (room_type === 'mens_bathroom') {
-            return 'male'
-          } else if (room_type === 'unisex_bathroom') {
-            return 'vm'
-          } else {
-            return 'female'
-          }
-        }
         
         $.get("/get_rooms", function(data, status){
           console.log(data['data'])
@@ -68,7 +59,7 @@
           for (var i = 0; i < room_list.length; i++) {
             latList.push(room_list[i][4])
             longList.push(room_list[i][2])
-            iconList.push(symbolParser(room_list[i][1]))
+            iconList.push(room_list[i][1])
           }
 
           for(var i=0;i < latList.length;i++){
