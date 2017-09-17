@@ -4,8 +4,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
 
-def index(request, name):
+def index(request):
     context = {
-            'name': name
+        
             }
-    return render(request, 'web_fyndr/index.html', context)
+    return render(request, 'index.html', context)
