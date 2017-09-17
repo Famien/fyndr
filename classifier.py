@@ -1,4 +1,4 @@
-import httplib, urllib, base64, json,time
+import http, urllib.request, urllib.parse, urllib.error, base64, json,time
 
 ###############################################
 #### Update or verify the following values. ###
@@ -24,7 +24,7 @@ def getTags(imageUrl):
         'Ocp-Apim-Subscription-Key': subscription_key,
     }
 
-    params = urllib.urlencode({
+    params = urllib.parse.urlencode({
         # Request parameters. All of them are optional.
         'visualFeatures': 'Categories,Description,Color',
         'language': 'en',
@@ -35,7 +35,7 @@ def getTags(imageUrl):
 
     try:
         # Execute the REST API call and get the response.
-        conn = httplib.HTTPSConnection('westcentralus.api.cognitive.microsoft.com')
+        conn = http.client.HTTPSConnection('westcentralus.api.cognitive.microsoft.com')
         conn.request("POST", "/vision/v1.0/analyze?%s" % params, body, headers)
         response = conn.getresponse()
         data = response.read()
@@ -62,7 +62,7 @@ def getText(imageUrl):
         'Ocp-Apim-Subscription-Key': subscription_key,
     }
 
-    params = urllib.urlencode({
+    params = urllib.parse.urlencode({
         # Request parameters. The language setting "unk" means automatically detect the language.
         'language': 'unk',
         'detectOrientation ': 'true',
@@ -72,7 +72,7 @@ def getText(imageUrl):
     body = "{'url':'"+imageUrl+"'}"
     try:
         # Execute the REST API call and get the response.
-        conn = httplib.HTTPSConnection('westcentralus.api.cognitive.microsoft.com')
+        conn = http.client.HTTPSConnection('westcentralus.api.cognitive.microsoft.com')
         conn.request("POST", "/vision/v1.0/ocr?%s" % params, body, headers)
         response = conn.getresponse()
         data = response.read()
