@@ -81,7 +81,8 @@ def getText(imageUrl):
         parsed = json.loads(data)
         text=[]
         # print len(parsed['regions'])
-        for i in range(len(parsed['regions'])):
+        for i in range(len(parsed['re
+        gions'])):
             # print parsed['regions'][i]['lines'][0]['words'][0]['text']
             text.append(parsed['regions'][i]['lines'][0]['words'][0]['text'])
             # print text
