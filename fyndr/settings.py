@@ -79,7 +79,14 @@ WSGI_APPLICATION = 'fyndr.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd9eu2mf4n8hcq4',
+        'USER': 'oevfewnurxkiyq',
+        'PASSWORD': '59e1ccde40a94e32af13a27b3866969c92b83a41474c4b3cde782348cf8985ca',
+        'HOST': 'ec2-23-21-186-138.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
