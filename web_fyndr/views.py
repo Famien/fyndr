@@ -16,12 +16,11 @@ def index(request):
 
 	if request.method == 'POST' and request.FILES['myfile']:
 		myfile = request.FILES['myfile']
-        fs = FileSystemStorage()
-        filename = fs.save(myfile.name, myfile)
-        print("filename: " + filename)
-        uploaded_file_url = fs.url(filename)
-        
-        return render(request, 'index.html', context)
+		fs = FileSystemStorage()
+		filename = fs.save(myfile.name, myfile)
+		print("filename: " + filename)
+		uploaded_file_url = fs.url(filename)
+		return render(request, 'index.html', context)
 
 	return render(request, 'index.html', context)
 
