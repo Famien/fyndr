@@ -160,5 +160,30 @@
 
 
   </script>
+
+{% block content %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="myfile">
+    <button type="submit">Upload</button>
+  </form>
+
+  <div> {{url}} </div>
+
+  <div id="rooms"></div>
+
+  <p><a href="{% url 'index' %}">Return to home</a></p>
+{% endblock %}
+  <script>
+  $(document).ready(function(){
+      $.get("/get_rooms", function(data, status){
+        console.log(data['data'])
+        $('#rooms').html(data['data'][1])
+    });
+  });
+ 
+</script>
+
+
 </body>
 </html>
