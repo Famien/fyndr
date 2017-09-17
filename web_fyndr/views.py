@@ -12,6 +12,11 @@ try:
 except:
 	print("can't connect to database")
 
+def get_pic(request):
+	pic_name = "3-7dwf.png"
+	print("pic name " + pic_name)
+	return HttpResponse("/media/" + pic_name, content_type="image/png")
+
 def index(request):
 	print("index")
 	context = {}
