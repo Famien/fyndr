@@ -8,7 +8,7 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        height: 50%;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -17,6 +17,7 @@
         padding: 0;
       }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
     <div id="map"></div>
@@ -29,9 +30,64 @@
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
-          zoom: 6
+          zoom: 15
         });
         infoWindow = new google.maps.InfoWindow;
+
+        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+        var icons = {
+          male: {
+            icon: iconBase + 'man.png'
+          },
+          female: {
+            icon: iconBase + 'woman.png'
+          },
+          vm: {
+            icon: iconBase + 'snack_bar.png'
+          }
+        };
+
+        var features = [];
+        latList = [];
+        longList = [];
+        iconList = ['male'];
+
+        function symbolParser(room_type) {
+          if (room_type === 'mens_bathroom') {
+            return 'male'
+          } else if (room_type === 'unisex_bathroom') {
+            return 'vm'
+          } else {
+            return 'female'
+          }
+        }
+        
+        $.get("/get_rooms", function(data, status){
+          console.log(data['data'])
+          var room_list = data['data']
+          for (var i = 0; i < room_list.length; i++) {
+            latList.push(room_list[i][4])
+            longList.push(room_list[i][2])
+            iconList.push(symbolParser(room_list[i][1]))
+          }
+
+          for(var i=0;i < latList.length;i++){
+            console.log(latList[i])
+            features.push({
+              position: new google.maps.LatLng(latList[i], longList[i]),
+              type: iconList[i]
+            })
+          }
+          console.log(features);
+          // Create markers.
+          features.forEach(function(feature) {
+            var marker = new google.maps.Marker({
+              position: feature.position,
+              icon: icons[feature.type].icon,
+              map: map
+            });
+          });
+        });
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {

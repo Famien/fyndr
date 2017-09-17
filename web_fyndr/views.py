@@ -33,7 +33,7 @@ def index(request):
 def map(request):
 	print("map")
 	context = {}
-	return render(request, 'map.html', context)
+	return render(request, 'map_location_current.html', context)
 
 def simple_upload(request):
 	print("simple ")
@@ -43,8 +43,6 @@ def find_rooms(request):
 	cur = conn.cursor()
 	cur.execute("""SELECT * FROM fyndr_rooms""")
 	rows = cur.fetchall()
-	print("rows")
-	print(rows[0])
-	return JsonResponse({"data": rows[0]})
+	return JsonResponse({"data": rows})
 
 
